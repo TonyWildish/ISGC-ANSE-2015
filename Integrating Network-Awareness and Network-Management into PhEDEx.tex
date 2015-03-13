@@ -1,0 +1,64 @@
+%\documentclass[toc]{Template/PoS}
+\documentclass{Template/PoS}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+
+\title{Integrating Network-Awareness and Network-Management into PhEDEx}
+
+\ShortTitle{Network-Management in PhEDEx}
+
+\author{\speaker{Vlad L\v{a}p\v{a}d\v{a}tescu}\\
+Caltech / USA\\
+E-mail: \email{vlad@cern.ch}}
+
+\author{Tony Wildish\\
+Princeton / USA\\
+E-mail: \email{awildish@princeton.edu}}
+
+\author{ANSE Collaboration 
+	\thanks{B. Ball, J. Batista, K. De, S. McKee, A. Melo, H. Newman, A. Petrosyan, P. Sheldon, R. Voicu}}
+
+\abstract{
+ANSE (Advanced Network Services for Experiments) is an NSF funded project, which aims
+ to incorporate advanced network-aware tools in the mainstream production workflows of 
+ LHC’s two largest experiments: ATLAS and CMS. For CMS, this translates in the integration 
+ of bandwidth provisioning capabilities in PhEDEx, its data-transfer management tool.
+
+PhEDEx controls the large-scale data-flows on the WAN across the experiment, typically
+ handling 1 PB of data per week, spread over 70 sites. This is only set to increase 
+ once LHC resumes operations in 2015.
+
+The goal of ANSE is to improve the overall working efficiency of the experiments, by 
+allowing for more deterministic times to completion for a designated set of data transfers,
+ through the use of end-to-end dynamic virtual circuits with guaranteed bandwidth.
+
+Through our work in ANSE, we have enhanced PhEDEx, allowing it to control a circuit’s 
+lifecycle based on its own needs. By checking its current workload and past transfer 
+history on normal links, PhEDEx is now able to make smart use of dynamic circuits, 
+only creating one when it’s worth doing so. Different circuit management infrastructures
+ can be used, via a plug-in system, making it highly adaptable.
+
+In this paper, we present the progress made by ANSE with regards to PhEDEx. We show how
+ our system has evolved since our prototype phase we presented last year, and how it is
+ now able to make use of dynamic circuits as a production-quality service. We describe 
+ its updated software architecture and how this mechanism can be refactored and used 
+ as a stand-alone system in other software domains (like ATLAS’ PanDA). We will also
+ present first results of transfers between CMS sites using this mechanism, and report
+ on the stability and performance of PhEDEx when using virtual circuits.
+
+We conclude, by describing the remaining work to be done ANSE (for PhEDEx) and discuss 
+on future directions for continued development.
+}
+
+\FullConference{International Symposium on Grids and Clouds (ISGC) 2014,\\
+		23-28 March 2014\\
+		Academia Sinica, Taipei, Taiwan}
+
+\parindent=0pt 
+
+\begin{document}
+    
+% \input{section-1-Introduction.tex} %
+
+\end{document}
