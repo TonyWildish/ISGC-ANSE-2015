@@ -1,4 +1,55 @@
 \section{Introduction}
 \subsection{PhEDEx}
-\subsection{Dynamic circuits}
-\subsection{Motivation}
+
+PhEDEx\cite{PhEDEx} is the data-placement management tool for the CMS\cite{CMS} 
+experiment at the LHC. It manages the scheduling of all large-scale WAN transfers 
+in CMS, ensuring reliable delivery of the data. It consists of several components:
+
+\begin{itemize}
+	\item an Oracle database, hosted at CERN
+	\item a website and data-service, which users (humans or machine) use to 
+	interact with and control PhEDEx
+	\item a set of \emph{central} agents that deal with routing, request-management,
+	bookeeping and other activities. These agents are also hosted at CERN, though 
+	they could be run anywhere. The key point is that there is only one set of 
+	central agents per PhEDEx instance
+	\item a set of \emph{site-agents}, one set for every site that receives data
+\end{itemize}
+
+PhEDEx was originally conceived over ten years ago now, and the architecture still 
+reflects design decisions made at that time. Then, the network was expected to be 
+the weakest link in the developing Worldwide LHC Grid (WLCG)\cite{WLCG}. Networks 
+were expected to have bandwidth of the order of 100 Mb/sec, to be unreliable, and 
+to be poorly connected across the span of the CMS experiment. Accordingly, PhEDEx 
+will back off fast and retry gently in the face of failed transfers, on the assumption 
+that failures will take time to fix, and that there is other data that can be 
+transferred in the meantime. This can lead to large latencies caused by transient 
+errors, with subsequent delays in processing the data.
+
+The data-transfer topology was designed with a strongly hierarchical structure. 
+The Tier-0 (CERN) transferred data primarily to a set of 6-7 Tier-1 sites, and each
+ Tier-1 site handled traffic between itself, the other Tier-1s. and it's local Tier-2
+ sites. Tier-2's wishing to exchange data would have to go via Tier-1 intermediaries. 
+ This kept the transfer-links (i.e. the set of (source,destination) pairs) mostly in 
+ the realm of a single regional network operator, the only cross-region links were 
+ used by Tier-1s which were assumed to have the expertise to debug problems and keep 
+ the data flowing. It also kept the overall number of transfer links low, since the 
+ majority of sites (the Tier-2s) had only one link, to their associated Tier-1 site.
+ 
+Today, the reality is very different. The network has emerged as the most reliable 
+component of the WLCG; problems with transfers tend to be at the end-points rather 
+than in the network itself. Bandwidths of 10 Gb/sec between Tier-2 sites is common 
+in many areas, and 100 Gb/sec connectivity is starting to appear. Even where the 
+bandwidth is still relatively low, connections are quite reliable, so data can be 
+transferred effectively. This has led CMS to embrace a fully connected transfer mesh 
+in which all sites are allowed to connect to any other site, so the number of transfer 
+links has risen from about 100 to nearer 3000.
+
+\subsection{ANSE}
+
+CMS has decided to address these limitations, and is considering a number of possible
+ avenues for the future of PhEDEx\cite{TW_DB_CHEP13}. The ANSE\footnote{A project 
+ funded by NSF CC-NIE program, initially for two years, which started in January 2013}
+ \cite{ANSE} project is addressing some of them, specifically how to make PhEDEx more 
+ aware of the network status, and how to provide PhEDEx with the means to control the 
+ network by way of virtual circuits and bandwidth-on-demand (BoD).

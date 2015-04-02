@@ -1,6 +1,6 @@
 \section{Towards a production ready software}
 
-The issues presented in the previous section warranted a redesign of the prototype.
+The limitations presented in the previous section warranted a redesign of the prototype.
 The production ready version of the system had to:
 \begin{itemize}
   \item Support multiple circuit backends
@@ -9,19 +9,19 @@ The production ready version of the system had to:
   \item Be thoroughly tested
 \end{itemize}
 
-This redesign lead us from a simple extension of the FileDownload agent, to the 
-software which we use today, whose class diagram is shown in Figure \ref{fig:class_diagram}.
+This redesign took the simple extension of the FileDownload agent to the 
+software that is used today, whose class diagram is shown in Figure \ref{fig:class_diagram}.
 
 \subsection{What was changed?}
 
 \subsubsection{Circuit agent}
 
 All of the logic initially inserted in the FileDownload agent has now been extracted and 
-placed in the CircuitAgent, an agent directly extending the FileDownload agent. This gives us 
+placed in the CircuitAgent, an agent directly extending the FileDownload agent. This opens 
 the possibility of deploying the software in production and only using the circuit integration 
 part with select sites. This is done by just by modifying a line in the PhEDEx config files.
-Another advantage is that we can quickly roll back to the normal FileDownload agent if the 
-CircuitAgent misbehaves.
+Another advantage is that operators can quickly roll back to the normal FileDownload agent 
+if the CircuitAgent misbehaves during integration
 
 The CircuitAgent no longer contains the logic related to the lifecycle management of circuits.
 This has been delegated to a new entity called the ResourceManager.
@@ -49,12 +49,12 @@ The new API supports the following calls:
 	\end{itemize}
 \end{itemize}
 
-Another important feature is the fact that the ResourceManager can now use multiple circuit
-providers via a plug-in system. We currently support two circuit providers: Dynes and NSI.
+Another important feature is that the ResourceManager can now use multiple circuit
+providers via a plug-in system. Two circuit providers are supported at the moment: Dynes and NSI.
 A third plug-in (Dummy) is provided for test purposes only.
 
 The sequence diagram presented in Figure \ref{fig:sequence_diagram} shows the main events
-at work in the software, as well as the order of interaction between them.
+at work in the software, as well as the interaction order  between them.
 
 \begin{figure}[h]
   \centering
@@ -72,14 +72,14 @@ at work in the software, as well as the order of interaction between them.
 
 \subsection{Circuit providers}
 
-When ANSE started it was supposed to use the Dynes infrastructure to provide Layer 3 circuits 
+When ANSE began it was supposed to use the Dynes infrastructure to provide Layer 3 circuits 
 between a select number of sites. Dynes was regarded as a "dynamic network cyber-instrument"
 and spanned over 40 US universities and 14 Internet2 connectors. It was based on the 
 implementation of Inter-Domain Circuit protocol developed by ESnet and Internet2 (with 
 cooperative development from GEANT and GLIF as well).
 
-As official funding ended for Dynes, the lack of continued support forced us to switch to different 
-technologies. To this end, we chose NSI as the replacement for Dynes as it is presently 
+As official funding ended for Dynes, the lack of continued support forced a switch to different 
+technologies. To this end, NSI was chosen as the replacement for Dynes as it is presently 
 supported by many important network providers around the globe (ESnet, Internet2, GEANT, etc.)
 
 \subsubsection{What is NSI?}
@@ -119,5 +119,4 @@ phase reservation system (Figure \ref{fig:NSI_RSM}).
   \label{fig:NSI_RSM}
 \end{figure} 
 
-The NSI plug-in which we implemented in our software uses an NSI CLI tool which was provided by 
-ESnet.
+The NSI plug-in implemented in our software uses an NSI CLI tool which was provided by ESnet.
