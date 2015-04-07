@@ -1,7 +1,7 @@
-ISGC-ANSE-2014
+ISGC-ANSE-2015
 ==============
 
-ISGC 2014 ANSE paper
+ISGC 2015 ANSE paper
 
 To build the paper the reccomended way:
 

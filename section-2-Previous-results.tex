@@ -11,11 +11,11 @@ the network (and transfer queues) exists, it was decided that integrating
 circuit awareness here, was a good compromise between ideal required 
 functionality and the complexity of the task at hand.
 
-The initial efforts focused on providing a prototype based on the FileDownload
-site agent. In addition, for the purposes of this prototype, FDT was chosen
+The initial efforts\cite{ANSE-ISGC} focused on providing a prototype based on the FileDownload
+site agent. In addition, for the purposes of this prototype, FDT\cite{FDT} was chosen
 as the transfer backend. The FDT tool is a fast, lightweight transfer tool,
 which integrates IDCP\footnote{InterDomain Controller Protocol} 
-OSCARS\footnote{On-Demand Secure Circuits and Advance Reservation System} calls.
+OSCARS\cite{OSCARS} (On-Demand Secure Circuits and Advance Reservation System) calls.
 
 \subsection{Standard FileDownload agent}
 
@@ -51,7 +51,8 @@ of the storage on which the file is located and the local path of the file
 on the storage. 
 The hostname present in the PFN, doesn't necessarily point to the
 actual server on which file replicas reside, but points to the entity that knows where 
-the file is located. This is particularly important when dealing with FTS and gridFTP.
+the file is located. This is particularly important when dealing with FTS\cite{FTS} 
+and gridFTP.
 The PFNs are actually constructed from Logical File Names (LFNs) and a look-up table
 which each site maintains and uploads to the central database.
 

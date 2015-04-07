@@ -30,7 +30,7 @@ This has been delegated to a new entity called the ResourceManager.
 
 The ResourceManager handles the lifecycle of circuits on behalf of PhEDEx and external programs.
 It can be viewed as a stand-alone entity, as it can receive calls directly from PhEDEx or 
-interact with external applications (like PanDA) via a new REST API.
+interact with external applications (like PanDA\cite{PANDA}) via a new REST API.
 
 The new API supports the following calls:
 \begin{itemize}
@@ -50,7 +50,8 @@ The new API supports the following calls:
 \end{itemize}
 
 Another important feature is that the ResourceManager can now use multiple circuit
-providers via a plug-in system. Two circuit providers are supported at the moment: Dynes and NSI.
+providers via a plug-in system. Two circuit providers are supported at the moment: 
+Dynes\cite{DYNES} and NSI\cite{NSI}.
 A third plug-in (Dummy) is provided for test purposes only.
 
 The sequence diagram presented in Figure \ref{fig:sequence_diagram} shows the main events
@@ -75,8 +76,8 @@ at work in the software, as well as the interaction order  between them.
 When ANSE began it was supposed to use the Dynes infrastructure to provide Layer 3 circuits 
 between a select number of sites. Dynes was regarded as a "dynamic network cyber-instrument"
 and spanned over 40 US universities and 14 Internet2 connectors. It was based on the 
-implementation of Inter-Domain Circuit protocol developed by ESnet and Internet2 (with 
-cooperative development from GEANT and GLIF as well).
+implementation of IDCP\cite{IDCP} (Inter-Domain Circuit Protocol) developed by ESnet and Internet2 
+(with cooperative development from GEANT and GLIF as well).
 
 As official funding ended for Dynes, the lack of continued support forced a switch to different 
 technologies. To this end, NSI was chosen as the replacement for Dynes as it is presently 
@@ -95,7 +96,7 @@ NSI provides different functionalities:
   \item Resource information: Service discovery, topology exchange, monitoring, history, security
 \end{itemize}
 
-NSI supports a tree and chain model of service chaining, and it's effectively a two 
+NSI\cite{NSI-CS2} supports a tree and chain model of service chaining, and it's effectively a two 
 phase reservation system (Figure \ref{fig:NSI_RSM}).
 
 \begin{itemize}
