@@ -26,7 +26,7 @@ circuits in a production environment, it comes nonetheless with a few limitation
   involved in an inter-domain transfer doesn't guarantee the bandwidth which PhEDEx 
   asks for, then the advantages of using circuits in PhEDEx may be lost.
   \item[NSI adoption is still limited:] Even though NSI has a lot more support from 
-  big network providers, adoption into production is still limited. 
+  big network providers, adoption into production is still limited at this time. 
 \end{description}
 
 \subsubsection{Difficulties in dealing with Layer2 circuits}
@@ -43,7 +43,7 @@ Establishing a Layer 3 path, is non-trivial since:
   \item[Direct access to the site's network:] Perhaps the biggest challenge in establishing 
   a Layer 3 path is the fact that one requires direct access to the site's network infrastructure.
   Doing live modifications of the routing information on any production network is controversial 
-  enough, even without thinking of that that infrastructure is critical to the success of LHC's 
+  enough, even more so given that the infrastructure is critical to the success of LHC's 
   Run 2.
 \end{description}
 
@@ -114,4 +114,13 @@ and \ref{fig:zoom-solution-view}.
   \includegraphics[width=0.95\textwidth]{Figures/Proposed_solution-zoom_view.png}
   \caption{In depth view of our proposed solution}
   \label{fig:zoom-solution-view}
-\end{figure} 
+\end{figure}
+
+Some parts in this proposed architecture are still under development, specifically
+the wrapper and the OpenFlow controller code, and this is where effort is 
+currently being invested.
+Once ready, this solution will work with the most common transfer backends in CMS,
+and will be able to support traffic prioritisation in a multiple VO environment. 
+Layer 3 routing will be assured by OpenFlow controllers, so there will be no need 
+to resort to Policy Based Routing (PRB) and marking of privileged packets to achieve that.
+By avoiding PBR and packet marking, interference with site's operations is also reduced.

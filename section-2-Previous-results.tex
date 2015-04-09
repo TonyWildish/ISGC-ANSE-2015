@@ -2,7 +2,7 @@
 
 \subsection{Introducing circuit awareness}
 
-As previously presented, PhEDEx consists of two different types of agents: 
+As described, PhEDEx consists of two different types of agents: 
 central and site agents. As such, the integration of dynamic circuits can 
 be done at one of those levels.
 
@@ -14,7 +14,7 @@ functionality and the complexity of the task at hand.
 The initial efforts\cite{ANSE-ISGC} focused on providing a prototype based on the FileDownload
 site agent. In addition, for the purposes of this prototype, FDT\cite{FDT} was chosen
 as the transfer backend. The FDT tool is a fast, lightweight transfer tool,
-which integrates IDCP\footnote{InterDomain Controller Protocol} 
+which integrates IDCP\footnote{InterDomain Controller Protocol} \cite{IDCP}
 OSCARS\cite{OSCARS} (On-Demand Secure Circuits and Advance Reservation System) calls.
 
 \subsection{Standard FileDownload agent}
@@ -144,7 +144,7 @@ ultimately had an impact on its ultimate usefulness.
   This meant that the part that requests circuits and manages their lifecycle could not be 
   separated from the FileDownload agent. This was needed in order to create a stand alone 
   application that could be used external tools as well.
-  \item Single circuit backend: Relied on a single method of requesting circuits (DYNES). 
+  \item Single circuit backend: Relied on a single method of requesting circuits (DYNES\cite{DYNES}). 
   For every different circuit provider used, a major change in code was required.
   \item Relied on FDT as a transfer tool: Unfortunately, this transfer tool is not widely used
   in production. Our production ready version should at least support the most common protocols

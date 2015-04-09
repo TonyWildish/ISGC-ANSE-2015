@@ -1,12 +1,13 @@
 \section{Towards a production ready software}
 
-The limitations presented in the previous section warranted a redesign of the prototype.
+After the success of the prototype we were ready to design the production solution.
 The production ready version of the system had to:
 \begin{itemize}
   \item Support multiple circuit backends
   \item Separate all PhEDEx logic from circuit lifecycle management
   \item Provide a REST interface for external application control
-  \item Be thoroughly tested
+  \item Provide a robust service to the application, regardless of 
+  potential instabilities in the underlying network service
 \end{itemize}
 
 This redesign took the simple extension of the FileDownload agent to the 
@@ -51,7 +52,7 @@ The new API supports the following calls:
 
 Another important feature is that the ResourceManager can now use multiple circuit
 providers via a plug-in system. Two circuit providers are supported at the moment: 
-Dynes\cite{DYNES} and NSI\cite{NSI}.
+DYNES and NSI\cite{NSI}.
 A third plug-in (Dummy) is provided for test purposes only.
 
 The sequence diagram presented in Figure \ref{fig:sequence_diagram} shows the main events
@@ -73,14 +74,14 @@ at work in the software, as well as the interaction order  between them.
 
 \subsection{Circuit providers}
 
-When ANSE began it was supposed to use the Dynes infrastructure to provide Layer 3 circuits 
-between a select number of sites. Dynes was regarded as a "dynamic network cyber-instrument"
+When ANSE began it was assumed it would use the DYNES infrastructure to provide Layer 3 circuits 
+between a select number of sites. DYNES was regarded as a "dynamic network cyber-instrument"
 and spanned over 40 US universities and 14 Internet2 connectors. It was based on the 
-implementation of IDCP\cite{IDCP} (Inter-Domain Circuit Protocol) developed by ESnet and Internet2 
+implementation of IDCP (Inter-Domain Circuit Protocol) developed by ESnet and Internet2 
 (with cooperative development from GEANT and GLIF as well).
 
-As official funding ended for Dynes, the lack of continued support forced a switch to different 
-technologies. To this end, NSI was chosen as the replacement for Dynes as it is presently 
+As official funding ended for DYNES, the lack of continued support forced a switch to different 
+technologies. To this end, NSI was chosen as the replacement for DYNES as it is presently 
 supported by many important network providers around the globe (ESnet, Internet2, GEANT, etc.)
 
 \subsubsection{What is NSI?}
@@ -96,7 +97,7 @@ NSI provides different functionalities:
   \item Resource information: Service discovery, topology exchange, monitoring, history, security
 \end{itemize}
 
-NSI\cite{NSI-CS2} supports a tree and chain model of service chaining, and it's effectively a two 
+NSI\cite{NSI-CS2} supports both tree and chain models of service chaining, and it's effectively a two 
 phase reservation system (Figure \ref{fig:NSI_RSM}).
 
 \begin{itemize}
